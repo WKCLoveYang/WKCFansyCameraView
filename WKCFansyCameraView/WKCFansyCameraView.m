@@ -719,9 +719,10 @@ UIGestureRecognizerDelegate>
         case WKCFansyCameraRunModeTakePhoto:
         {
             _runMode = WKCFansyCameraRunModeCommon;
+            
+            CVPixelBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+            UIImage * image = [self imageFromPixelBuffer:buffer];
             dispatch_async(dispatch_get_main_queue(), ^{
-                CVPixelBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-                UIImage * image = [self imageFromPixelBuffer:buffer];
                 UIImage * photo = [self cutoutImage:image]; //按当前视图裁剪
                 if (self.delegate && [self.delegate respondsToSelector:@selector(fansyCamera:didTakePhoto:)]) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(WKCFansyCameraAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
