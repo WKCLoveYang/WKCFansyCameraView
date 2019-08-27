@@ -264,9 +264,6 @@ UIGestureRecognizerDelegate>
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
                          self.frame = frame;
-                         self.previewLayer.frame = self.bounds;
-                         self.focusImageView.center = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
-                         self.blurView.frame = self.bounds;
                      } completion:^(BOOL finished) {
                          if (finished) {
                              self.blurView.hidden = YES;
@@ -274,7 +271,13 @@ UIGestureRecognizerDelegate>
                      }];
 }
 
-
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.previewLayer.frame = self.bounds;
+    self.focusImageView.center = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
+}
 
 - (void)setVideoZoom:(CGFloat)zoom
 {
@@ -576,7 +579,7 @@ UIGestureRecognizerDelegate>
     if (!_blurView) {
         UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         _blurView = [[UIVisualEffectView alloc] initWithEffect:effect];
-        _blurView.frame = self.bounds;
+        _blurView.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height);
         _blurView.hidden = YES;
     }
     
