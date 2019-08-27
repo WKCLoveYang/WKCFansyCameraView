@@ -111,6 +111,7 @@ UIGestureRecognizerDelegate>
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.shouldExposureEnable = YES;
+        _flashMode = self.captureDevice.torchMode;
         
         [self.layer addSublayer:self.previewLayer];
         [self addSubview:self.blurView];
@@ -232,6 +233,8 @@ UIGestureRecognizerDelegate>
     } else {
         newMode = AVCaptureTorchModeOff;
     }
+    
+    _flashMode = newMode;
     
     [self.captureDevice lockForConfiguration:nil];
     self.captureDevice.torchMode = newMode;
@@ -785,11 +788,6 @@ UIGestureRecognizerDelegate>
     self.videoConnection.videoOrientation = captureOrientation;
 }
 
-- (AVCaptureTorchMode)flashMode
-{
-    return self.captureDevice.torchMode;
-}
-
 - (void)setFocusPoint:(CGPoint)focusPoint
 {
     _focusPoint = focusPoint;
@@ -849,6 +847,15 @@ UIGestureRecognizerDelegate>
     } else {
         [self removeGestureRecognizer:self.tapGesture];
     }
+}
+
+- (void)setFlashMode:(AVCaptureTorchMode)flashMode
+{
+    _flashMode = flashMode;
+    
+    [self.captureDevice lockForConfiguration:nil];
+    self.captureDevice.torchMode = flashMode;
+    [self.captureDevice unlockForConfiguration];
 }
 
 
