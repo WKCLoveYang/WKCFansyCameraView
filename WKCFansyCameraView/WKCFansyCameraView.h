@@ -69,7 +69,7 @@ typedef void(^WKCFansyCameraBlock)(void);
 /**
   闪光灯模式
  */
-@property (nonatomic, assign) AVCaptureTorchMode flashMode;
+@property (nonatomic, assign, readonly) AVCaptureTorchMode flashMode;
 
 /**
   摄像头位置

@@ -111,7 +111,6 @@ UIGestureRecognizerDelegate>
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.shouldExposureEnable = YES;
-        _flashMode = self.captureDevice.torchMode;
         
         [self.layer addSublayer:self.previewLayer];
         [self addSubview:self.blurView];
@@ -161,6 +160,13 @@ UIGestureRecognizerDelegate>
     
     AVCaptureDevicePosition newPosition = _position == AVCaptureDevicePositionFront ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
     _position = newPosition;
+    
+    // 如果前置,自动关闭闪光灯
+    if (newPosition == AVCaptureDevicePositionFront) {
+        [self.captureDevice lockForConfiguration:nil];
+        self.captureDevice.torchMode = AVCaptureTorchModeOff;
+        [self.captureDevice unlockForConfiguration];
+    }
     
     [self.captureSession removeInput:self.deviceInput];
     self.captureDevice = nil;
@@ -233,8 +239,6 @@ UIGestureRecognizerDelegate>
     } else {
         newMode = AVCaptureTorchModeOff;
     }
-    
-    _flashMode = newMode;
     
     [self.captureDevice lockForConfiguration:nil];
     self.captureDevice.torchMode = newMode;
@@ -849,14 +853,9 @@ UIGestureRecognizerDelegate>
     }
 }
 
-- (void)setFlashMode:(AVCaptureTorchMode)flashMode
+- (AVCaptureTorchMode)flashMode
 {
-    _flashMode = flashMode;
-    
-    [self.captureDevice lockForConfiguration:nil];
-    self.captureDevice.torchMode = flashMode;
-    [self.captureDevice unlockForConfiguration];
+    return self.captureDevice.torchMode;
 }
-
 
 @end
