@@ -1,0 +1,16 @@
+platform :ios, '10.0'
+
+inhibit_all_warnings!
+
+def shared_pods
+
+pod 'WKCFansyCameraView'
+pod 'UIVIewMasonryLayout'
+pod 'JGProgressHUD'
+
+end
+
+abstract_target 'default' do
+shared_pods
+target 'Demo'
+end

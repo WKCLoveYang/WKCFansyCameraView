@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-default-Demo/Pods-default-Demo-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/JGProgressHUD/JGProgressHUD.bundle
+${PODS_ROOT}/WKCFansyCameraView/WKCFansyCameraView/Resource/camera_focus.png
+${PODS_ROOT}/WKCFansyCameraView/WKCFansyCameraView/Resource/camera_light.png

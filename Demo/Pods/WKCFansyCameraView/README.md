@@ -73,5 +73,3 @@ position:(AVCaptureDevicePosition)position;
 
 
 ```
-
-![Alt text](https://github.com/WKCLoveYang/WKCFansyCameraView/raw/master/Source/photo.png).

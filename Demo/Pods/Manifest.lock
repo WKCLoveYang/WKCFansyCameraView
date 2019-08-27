@@ -1,0 +1,28 @@
+PODS:
+  - JGProgressHUD (2.0.4)
+  - Masonry (1.1.0)
+  - UIVIewMasonryLayout (1.5.0):
+    - Masonry
+  - WKCFansyCameraView (2.0.0)
+
+DEPENDENCIES:
+  - JGProgressHUD
+  - UIVIewMasonryLayout
+  - WKCFansyCameraView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
+    - Masonry
+    - UIVIewMasonryLayout
+    - WKCFansyCameraView
+
+SPEC CHECKSUMS:
+  JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  UIVIewMasonryLayout: 64f6810d3bd432062df44c1cd554360bcbb0535c
+  WKCFansyCameraView: 9fa9b702a740abb4e5ebf8d88b2040832de468a4
+
+PODFILE CHECKSUM: 3b74b81d43a8e571e7f21397d57e1984f8c052ed
+
+COCOAPODS: 1.7.5

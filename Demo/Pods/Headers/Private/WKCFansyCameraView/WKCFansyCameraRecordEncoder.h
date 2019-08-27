@@ -1,0 +1,1 @@
+../../../WKCFansyCameraView/WKCFansyCameraView/WKCFansyCameraRecordEncoder.h
