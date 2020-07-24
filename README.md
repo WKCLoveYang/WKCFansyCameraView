@@ -74,4 +74,7 @@ position:(AVCaptureDevicePosition)position;
 
 ```
 
+[swift](https://github.com/WKCLoveYang/WKCCoolCameraView)
+
 ![Alt text](https://github.com/WKCLoveYang/WKCFansyCameraView/raw/master/Source/photo.png).
+

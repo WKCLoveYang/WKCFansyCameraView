@@ -93,6 +93,7 @@ typedef NS_ENUM(NSInteger, WKCFansyCameraFrameMode) {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor grayColor];
+    
 }
 
 - (void)buttonAction:(UIButton *)sender
